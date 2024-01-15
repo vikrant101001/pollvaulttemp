@@ -37,7 +37,8 @@ passwordsecret = os.environ['passwordsecret']
 databasesecret = os.environ['databasesecret']
 mailsecret = os.environ['mailsecret']
 mailpasswordsecret = os.environ['mailpasswordsecret']
-
+jwtsecret = os.environ['jwtsecret']
+servergmailsecret = os.environ['servergmailsecret']
 db_params = {
     'host': hostsecret,
     'port': portsecret,
@@ -49,7 +50,7 @@ db_params = {
 mail_params = {
     'email': mailsecret,  # Your email address for sending OTP
     'password': mailpasswordsecret,  # Your email password
-    'server': 'smtp.gmail.com',  # Change based on your email provider
+    'server': servergmailsecret,  # Change based on your email provider
     'port': 587,
 }
 otp_secret_key = os.environ.get('APISECRET')
@@ -265,7 +266,7 @@ def validate_access_token(access_token):
   try:
     # Decode the access token
     decoded_token = jwt.decode(access_token,
-                               'Pollvaultsecret',
+                               jwtsecret,
                                algorithms=['HS256'])
 
     # Check if the token is not expired
@@ -371,7 +372,7 @@ def sign_in():
 
       try:
         jwt_token = jwt.encode(token_payload,
-                               'Pollvaultsecret',
+                               jwtsecret,
                                algorithm='HS256')
         print(f"JWT Token: {jwt_token}")
         jwtd = jwt_token.decode('utf-8')
