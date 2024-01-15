@@ -29,16 +29,7 @@ bcrypt = Bcrypt()
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-APISECRET = os.environ.get('APISECRET')
-hostsecret = os.environ['hostsecret']
-portsecret = os.environ['portsecret']
-usersecret = os.environ['usersecret']
-passwordsecret = os.environ['passwordsecret']
-databasesecret = os.environ['databasesecret']
-mailsecret = os.environ['mailsecret']
-mailpasswordsecret = os.environ['mailpasswordsecret']
-jwtsecret = os.environ['jwtsecret']
-servergmailsecret = os.environ['servergmailsecret']
+
 db_params = {
     'host': hostsecret,
     'port': portsecret,
@@ -53,15 +44,10 @@ mail_params = {
     'server': servergmailsecret,  # Change based on your email provider
     'port': 587,
 }
-otp_secret_key = os.environ.get('APISECRET')
+
 otp_expiry_seconds = 300  # OTP validity period in seconds
 
-app.config['MAIL_SERVER'] = mail_params['server']
-app.config['MAIL_PORT'] = mail_params['port']
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = mail_params['email']
-app.config['MAIL_PASSWORD'] = mail_params['password']
+
 
 users = []
 profiles = []
